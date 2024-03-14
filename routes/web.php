@@ -19,4 +19,5 @@ Route::get('/', function () {
 });
 
 //Route::get('/products', [ProductController::class, 'index']);
+//Route::post('/products/create', [ProductController::class, 'create']);
 Route::resource('/products', ProductController::class);

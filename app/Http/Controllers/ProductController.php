@@ -21,7 +21,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create');
     }
 
     /**
@@ -29,7 +29,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Valida os campos do formulário
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+        ]);
+
+        // Cria um novo produto
+        $pd = Product::create($validatedData);
+        // Redireciona para a página de produtos
+        return redirect()->route('products.index');
     }
 
     /**

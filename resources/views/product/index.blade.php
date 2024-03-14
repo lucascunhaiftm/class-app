@@ -1,3 +1,4 @@
+<a href="{{route('products.create')}}"> Cadastrar</a>
 <table class="table table-striped">
     <thead>
         <tr>
