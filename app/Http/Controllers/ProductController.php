@@ -48,7 +48,12 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Product::find((int)$id);
+        if(!isset($product)){
+            return back();
+        }
+
+        return view('product.show', compact('product'));
     }
 
     /**
