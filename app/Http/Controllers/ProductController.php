@@ -56,7 +56,12 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::find((int)$id);
+        if(!isset($product)){
+            return back();
+        }
+
+        return view('product.edit', compact('product'));
     }
 
     /**
@@ -64,7 +69,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::find((int)$id);
+        if(!isset($product)){
+            return back();
+        }
+         // Valida os campos do formulário
+         $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+        ]);
+
+        //$product->name = $request->name;
+        //$product->save();
+        $product->update($validatedData);
+        return redirect()->route('products.index');
     }
 
     /**
