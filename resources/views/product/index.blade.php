@@ -15,7 +15,9 @@
                 <td scope="row">{{$product->description}}</td>
                 <td scope="row">{{$product->price}}</td>
                 <td scope="row">{{$product->stock}}</td>
-                <td scope="row"><a href="{{route('products.edit', $product->id)}}"> Editar</td>
+                @can('product-edit')
+                    <td scope="row"><a href="{{route('products.edit', $product->id)}}"> Editar</td>
+                @endcan
                 <td scope="row"><a href="{{route('products.show', $product->id)}}"> Mostrar</td>
             </tr>
         @endforeach
