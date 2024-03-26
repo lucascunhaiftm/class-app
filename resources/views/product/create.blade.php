@@ -1,24 +1,45 @@
 @extends('product.layouts.app')
 
 @section('content')
-    <h1>Cadastro de Produto</h1>
-    @component('components.form-error-fields')
-    @endcomponent
-    <form action="{{ route('products.store') }}" method="post">
-        @csrf()
-        <label for="name">Nome:</label>
-        <input type="text" id="name" name="name" placeholder="Digite o nome do produto">
-        <br>
-        <label for="description">Descrição:</label>
-        <br>
-        <textarea id="description" name="description" rows="4" cols="50" placeholder="Digite a descrição do produto"></textarea>
-        <br>
-        <label for="price">Preço:</label>
-        <input type="number" id="price" name="price" step="0.01" placeholder="Digite o preço do produto">
-        <br>
-        <label for="stock">Estoque:</label>
-        <input type="number" id="stock" name="stock" placeholder="Digite a quantidade em estoque">
-        <br><br>
-        <input type="submit" value="Enviar">
-    </form>
+    <div class="container">
+        <h1>Cadastro de Produto</h1>
+        @component('components.form-error-fields')
+        @endcomponent
+        <form role="form" class="mt-5" action="{{ route('products.store') }}" method="post">
+            @csrf()
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">Nome</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" name="name"
+                        placeholder="Digite o nome do produto">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="description">Descrição:</label>
+                <div class="col-sm-10">
+                    <textarea id="description" class="form-control" name="description" rows="4" cols="50"
+                        placeholder="Digite a descrição do produto"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="price">Preço:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" id="price" name="price" step="0.01"
+                        placeholder="Digite o preço do produto">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="stock">Estoque:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" id="stock" name="stock"
+                        placeholder="Digite a quantidade em estoque">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="offset-sm-2 col-sm-10">
+                    <input type="submit" value="Enviar" name="submit" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
 @endsection
