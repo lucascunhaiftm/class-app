@@ -5,6 +5,7 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href={{ route('products.index') }}>Produtos <span
                         class="caret"></span></a>
                 <ul class="dropdown-menu">
+                  <li><a href={{ route('products.index') }}>Listar</a></li>
                     <li><a href={{ route('products.create') }}>Cadastrar</a></li>
                 </ul>
             </li>
