@@ -19,6 +19,16 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
+                <li class="dropdown @if (str_contains(Route::current()->getName(), 'category')) active @endif">
+                    <a class="nav-link dropdown-toggle" href={{ route('category.index') }} id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categoria
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href={{ route('category.index') }}>Listar</a>
+                        <a class="dropdown-item" href={{ route('category.create') }}>Cadastrar</a>
+                    </div>
+                </li>
             </ul>
             <div class="">
                 <ul class="navbar-nav mr-auto">
