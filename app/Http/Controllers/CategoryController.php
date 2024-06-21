@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateCategory;
 use App\Models\Category;
-use Illuminate\Http\Request;
+
 
 class CategoryController extends Controller
 {
@@ -21,15 +22,18 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUpdateCategory $request)
     {
-        //
+        // Cria um nova categoria
+        $pd = Category::create($request->validated());
+        // Redireciona para a página de categoria
+        return redirect()->route('category.index');
     }
 
     /**
@@ -37,7 +41,12 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category = Category::find((int)$id);
+        if(!isset($category)){
+            return back();
+        }
+
+        return view('category.show', compact('category'));
     }
 
     /**
@@ -45,15 +54,28 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::find((int)$id);
+        if(!isset($category)){
+            return back();
+        }
+
+        return view('category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreUpdateCategory $request, string $id)
     {
-        //
+        $category = Category::find((int)$id);
+        if(!isset($category)){
+            return back();
+        }
+       
+        //$product->name = $request->name;
+        //$product->save();
+        $category->update($request->validated());
+        return redirect()->route('category.index');
     }
 
     /**
@@ -61,6 +83,12 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::find((int)$id);
+        if(!isset($category)){
+            return back();
+        }
+
+        $category->delete();
+        return redirect()->route('category.index');
     }
 }
