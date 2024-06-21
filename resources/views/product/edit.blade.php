@@ -1,4 +1,4 @@
-@extends('product.layouts.app')
+@extends('layouts.master')
 @section('content')
     <div class="container">
         <h1>Cadastro de Produto</h1>
