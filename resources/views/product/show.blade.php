@@ -32,6 +32,13 @@
             </div>
         </div>
         <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="category_id">Categoria:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="category_id" name="category_id"
+                    placeholder="Categoria" value={{ $product->category->name }} readonly>
+            </div>
+        </div>
+        <div class="form-group row">
             <div class="offset-sm-2 col-sm-10">
                 <form action="{{ route('products.destroy', $product->id) }}" method="post">
                     @csrf
