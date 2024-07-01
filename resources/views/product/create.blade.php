@@ -36,6 +36,16 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="category_id">Categoria:</label>
+                <div class="col-sm-10">
+                    <select name="category_id" id="category_id" class="form-control">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
                 <div class="offset-sm-2 col-sm-10">
                     <input type="submit" value="Enviar" name="submit" class="btn btn-primary" />
                 </div>
