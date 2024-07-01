@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUpdateProduct;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -22,7 +23,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.create');
+        $categories = Category::all();
+        return view('product.create', compact('categories'));
     }
 
     /**
@@ -58,8 +60,8 @@ class ProductController extends Controller
         if(!isset($product)){
             return back();
         }
-
-        return view('product.edit', compact('product'));
+        $categories = Category::all();
+        return view('product.edit', compact('product', 'categories'));
     }
 
     /**
