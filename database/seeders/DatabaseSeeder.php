@@ -13,11 +13,17 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    private $permissions = [
+    private $permissions_product = [
         'product-list',
         'product-create',
         'product-edit',
-        'product-delete'
+        'product-delete',
+    ];
+    private $permissions_category = [
+        'category-list',
+        'category-create',
+        'category-edit',
+        'category-delete'
     ];
     public function run(): void
     {
@@ -31,18 +37,29 @@ class DatabaseSeeder extends Seeder
         $this->call([ProductSeeder::class]);
         $this->call([UserSeeder::class]);
 
-        foreach ($this->permissions as $permission) {
+        foreach ($this->permissions_product as $permission) {
             Permission::create(['name' => $permission]);
         }
+
+        foreach ($this->permissions_category as $permission) {
+            Permission::create(['name' => $permission]);
+        }
+
         $adminRole = Role::create(['name' => 'Administrator']);
         $managerRole = Role::create(['name' => 'Manager']);
+
         foreach( Permission::all() as $permission){
             $permission->assignRole($adminRole);
         }
-        $permissionListProduct = Permission::findByName('product-list');
-        $permissionListProduct->assignRole($managerRole);
 
+        foreach( Permission::where('name', 'like', '%product%')->get() as $permission){
+            $permission->assignRole($managerRole);
+        }
+ 
         $adminUser = User::where('email', '=', 'usera@example.com')->first();
         $adminUser->assignRole('Administrator');
+
+        $adminUser = User::where('email', '=', 'userb@example.com')->first();
+        $adminUser->assignRole('Manager');
     }
 }
