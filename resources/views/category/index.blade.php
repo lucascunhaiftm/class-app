@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <h1>Listagem de Categoria</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
