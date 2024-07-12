@@ -25,6 +25,7 @@
             <div class="form-group row">
                 <div class="offset-sm-2 col-sm-10">
                     <input type="submit" value="Enviar" name="submit" class="btn btn-primary" />
+                    <a href="{{ URL::previous() }}" class="ml-3 btn btn-primary"> Voltar </a>
                 </div>
             </div>
         </form>

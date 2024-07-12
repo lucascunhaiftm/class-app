@@ -23,6 +23,7 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger" >Excluir</button>
+                    <a href="{{ URL::previous() }}" class="ml-3 btn btn-primary"> Voltar </a>
                 </form>
             </div>
         </div>
