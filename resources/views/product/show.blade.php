@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Cadastro de Produto</h1>
+        <h1>Produto</h1>
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Nome</label>
             <div class="col-sm-10">
