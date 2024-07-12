@@ -20,7 +20,7 @@
                         <td scope="row">{{ $product->description }}</td>
                         <td scope="row">{{ $product->price }}</td>
                         <td scope="row">{{ $product->stock }}</td>
-                        <td scope="row">{{ $product->category->name }}</td>
+                        <td scope="row">@if(isset($product->category)) {{ $product->category->name }} @else - @endif</td>
                         <td scope="row"><a href="{{ route('products.show', $product->id) }}"> Mostrar</td>
                         @can('product-edit')
                             <td scope="row"><a href="{{ route('products.edit', $product->id) }}"> Editar</td>
