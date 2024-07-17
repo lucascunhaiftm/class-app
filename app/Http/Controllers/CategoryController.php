@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUpdateCategory;
+use App\Http\Requests\StoreUpdateCategoryRequest;
 use App\Models\Category;
 
 
@@ -28,7 +28,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUpdateCategory $request)
+    public function store(StoreUpdateCategoryRequest $request)
     {
         // Cria um nova categoria
         $pd = Category::create($request->validated());
@@ -65,7 +65,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreUpdateCategory $request, string $id)
+    public function update(StoreUpdateCategoryRequest $request, string $id)
     {
         $category = Category::find((int)$id);
         if(!isset($category)){

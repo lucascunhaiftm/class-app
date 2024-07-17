@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreUpdateProduct;
+use App\Http\Requests\StoreUpdateProductRequest;
 use App\Models\Category;
 
 class ProductController extends Controller
@@ -30,7 +30,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUpdateProduct $request)
+    public function store(StoreUpdateProductRequest $request)
     {
         // Cria um novo produto
         $pd = Product::create($request->validated());
@@ -67,7 +67,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreUpdateProduct $request, string $id)
+    public function update(StoreUpdateProductRequest $request, string $id)
     {
         $product = Product::find((int)$id);
         if(!isset($product)){
