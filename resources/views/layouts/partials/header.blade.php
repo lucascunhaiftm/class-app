@@ -31,6 +31,18 @@
                         </div>
                     </li>
                 @endif
+                @if(Auth::user()->hasRole('Administrator'))
+                    <li class="dropdown @if (str_contains(Route::current()->getName(), 'order')) active @endif">
+                        <a class="nav-link dropdown-toggle" href={{ route('order.index') }} id="navbarDropdown"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Pedidos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href={{ route('order.index') }}>Listar</a>
+                            <a class="dropdown-item" href={{ route('order.create') }}>Cadastrar</a>
+                        </div>
+                    </li>
+                @endif
             </ul>
             <div class="">
                 <ul class="navbar-nav mr-auto">
