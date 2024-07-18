@@ -26,5 +26,18 @@ class OrderSeeder extends Seeder
                 'amount' => 2, // Example amount, you can adjust as per your needs
             ]);
         }
+
+        // Create an order
+        $order = Order::create([
+            'type' => Order::SELL, // Example type for the order
+        ]);
+
+        // Attach products to the order with pivot data (price and amount)
+        foreach ($products as $product) {
+            $order->products()->attach($product, [
+                'price' => $product->price, // Assuming 'price' is a field in the Product model
+                'amount' => 1, // Example amount, you can adjust as per your needs
+            ]);
+        }
     }
 }
