@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
         $this->call([CategorySeeder::class]);
         $this->call([UserSeeder::class]);
         $this->call([ProductSeeder::class]);
+        $this->call([OrderSeeder::class]);
 
         foreach ($this->permissions_product as $permission) {
             Permission::create(['name' => $permission]);
